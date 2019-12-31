@@ -55,6 +55,7 @@ void MainScene::Init()
 
 	
 	isStart = false;
+	lab = new Label();
 }
 
 void MainScene::Update()
@@ -67,10 +68,17 @@ void MainScene::Update()
 
 	if (isStart)
 	{
-		m->timer += Time::deltaTime * 100;
+		m->timer += Time::deltaTime;
 		if (m->timer > 1)
 		{
-			timer->Add(m);
+			//timer->Add(m);
+			//lab->Create_Label(m->hour, { 190,290 });
+			//lab->Create_Label(m->hour2, { 230,290 });
+			//lab->Create_Label(m->minute, { 270,290 });
+			//lab->Create_Label(m->min2, { 310,290 });
+			//lab->Create_Label(m->second, { 350,290 });
+			//lab->Create_Label(m->sec2, { 390,290 });
+			timer->Output(m, { 500,290 });
 			m->sec2++;
 			m->timer = 0;
 		}
@@ -112,6 +120,18 @@ void MainScene::Update()
 		if (PtInRect(&quit->GetRect(), Director::GetInstance()->p))
 		{
 			exit(1);
+		}
+		if (PtInRect(&save->GetRect(), Director::GetInstance()->p))
+		{
+			timer->Add(m);
+		}
+		if (PtInRect(&reload->GetRect(), Director::GetInstance()->p))
+		{
+			timer->Load(m);
+		}
+		if (PtInRect(&restart->GetRect(), Director::GetInstance()->p))
+		{
+			timer->Start(m);
 		}
 	}
 }

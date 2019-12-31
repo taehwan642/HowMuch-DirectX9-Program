@@ -1,5 +1,6 @@
 #pragma once
 #include "Types.h"
+#include "Sprite.h"
 class master
 {
 public:
@@ -14,12 +15,17 @@ public:
 	string str;
 };
 
-class Timer
+class Timer : public Node
 {
 public:
-
-	void Start();
+	int Addpos;
+	int Addnum;
+	int Addp;
+	Timer();
+	void Start(master* m);
 	void Add(master* m);
-	void Output();
+	void Load(master* m);
+	void Output(master* m, vector2 vec);
+	vector<Sprite*> sp;
 };
 

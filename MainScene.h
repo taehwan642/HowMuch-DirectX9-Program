@@ -4,10 +4,11 @@
 #include "GameScene.h"
 #include "Sprite.h"
 #include "Timer.h"
-
+#include "Label.h"
 class MainScene : public Scene
 {
 public:
+	Label* lab;
 	Timer* timer;
 	master* m;
 	Sprite* howmuch;
